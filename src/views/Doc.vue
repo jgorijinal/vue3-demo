@@ -30,5 +30,24 @@ export default {
 }
 </script>
 <style lang="scss">
-
+aside {
+  background: white;
+  width: 150px;
+  padding: 70px 16px 16px 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  > h2 {
+    margin-bottom: 4px;
+  }
+  > ol {
+    > li {
+      padding: 4px 0;
+      color: #8a8989;
+      &:hover {
+        color: #213547;
+      }
+    }
+  }
+}
 </style>
