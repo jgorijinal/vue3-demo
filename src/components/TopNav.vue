@@ -32,7 +32,8 @@ setup(){
   display: flex;
   color: #213547;
   border-bottom: 1px solid #e7e7e8;
-  position: relative;
+  position: fixed;
+  width:100% ;
   z-index:10;
   > .logo {
     max-width: 6em;
@@ -59,6 +60,9 @@ setup(){
     top:50%;
     transform: translateY(-50%);
     cursor: pointer;
+    &:active {
+      color: #476582;
+    }
   }
   @media (max-width:720px) {
     .menu {display: none}

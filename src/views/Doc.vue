@@ -39,7 +39,7 @@ export default {
     };
     window.addEventListener('resize', () => {
       const width = document.documentElement.clientWidth;
-      if (width > 720) {
+      if (width >= 720) {
         menuVisible.value = true;
       } else {
         menuVisible.value = false;
@@ -51,20 +51,31 @@ export default {
 </script>
 <style lang="scss">
 .content {
-  display: flex;
+  display: flex;flex-grow: 1;
+  > aside {
+    flex-shrink: 0;
+  }
+  > main {
+    margin-top: 58px;
+    flex-grow: 1;
+    padding: 16px;
+    background: lightgreen;
+    overflow: auto;
+  }
 }
 
 aside {
   background: white;
   width: 200px;
-  height: 100vh;
+  height:  100%;
   border-right: 1px solid #e7e7e8;
-  padding: 10px 16px 16px 16px;
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 68px 16px 16px 16px;
   > h2 {
     margin-bottom: 4px;
   }
-
   > ol {
     > li {
       a {
@@ -73,7 +84,6 @@ aside {
         padding: 4px 0;
         width: 100%;
         color: #858484;
-
         &:hover {
           color: #213547;
         }
@@ -82,15 +92,12 @@ aside {
   }
 }
 
-@media (max-width: 720px) {
-  aside {
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 68px 16px 16px 16px;
-  }
+//@media (max-width: 720px) {
+//
+//}
+@media (min-width: 737px) {
+  main { margin-left: 200px}
 }
-
 .slide-enter-active,
 .slide-leave-active {
   transition: all 0.4s ease;
