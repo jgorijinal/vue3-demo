@@ -1,19 +1,28 @@
 <template>
   <div class="topNav">
-    <div class="logo"><router-link to="/" class="logoText">DNA UI</router-link></div>
+    <div class="logo" ><router-link to="/" class="logoText">DNA UI</router-link></div>
     <ul class="menu">
-      <li>菜单1</li>
+      <li @click="toggle">菜单1</li>
       <li>菜单2</li>
     </ul>
   </div>
 </template>
-<script>
-export default {
+<script lang="ts">
+import {inject, Ref} from 'vue';
 
+export default {
+setup(){
+  const menuVisible = inject<Ref<Boolean>>('menuVisible')
+  const toggle = ()=>{
+    menuVisible.value =  !menuVisible.value
+  }
+  return {toggle,menuVisible}
+}
 }
 </script>
 <style lang="scss" scoped>
 .topNav {
+  height: 58px;
   background: #ffffff;
   display: flex;
   color: #213547;
@@ -27,6 +36,7 @@ export default {
     align-items: center;
     .logoText {
       padding: 16px;
+      white-space: nowrap;
     }
   }
   > .menu {
@@ -38,5 +48,12 @@ export default {
       padding: 16px 0;
     }
   }
+  @media (max-width:720px) {
+    .menu {display: none}
+    .logo {margin:0 auto}
+
+  }
 }
+
+
 </style>

@@ -1,7 +1,8 @@
 <template>
    <TopNav />
   <div class="content">
-    <aside>
+    <aside v-if="menuVisible">
+      <h2>组件列表</h2>
        <ol>
          <li>
            <router-link to="/doc/switch">Switch</router-link>
@@ -23,29 +24,44 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import TopNav from '../components/TopNav.vue'
+import {inject, Ref} from "vue";
+
 export default {
-  components:{TopNav}
+  components:{TopNav},
+  setup(){
+    const menuVisible = inject<Ref<Boolean>>('menuVisible')
+    const toggle = ()=>{
+      menuVisible.value =  !menuVisible.value
+    }
+    return {toggle,menuVisible}
+  }
 }
 </script>
 <style lang="scss">
 aside {
   background: white;
-  width: 150px;
-  padding: 70px 16px 16px 16px;
+  width: 200px;
+  padding: 68px 16px 16px 16px;
   position: fixed;
   top: 0;
   left: 0;
+  height: 100vh;
   > h2 {
     margin-bottom: 4px;
   }
   > ol {
     > li {
-      padding: 4px 0;
-      color: #8a8989;
-      &:hover {
-        color: #213547;
+      a {
+        transition: all 0.25s;
+        display: inline-block;
+        padding: 4px 0;
+        width: 100%;
+        color: #858484;
+        &:hover {
+          color: #213547;
+        }
       }
     }
   }
