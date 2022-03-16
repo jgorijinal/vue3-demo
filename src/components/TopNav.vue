@@ -32,6 +32,7 @@ setup(){
   display: flex;
   color: #213547;
   border-bottom: 1px solid #e7e7e8;
+  align-items: center;
   position: fixed;
   width:100% ;
   z-index:10;

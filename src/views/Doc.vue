@@ -51,7 +51,9 @@ export default {
 </script>
 <style lang="scss">
 .content {
-  display: flex;flex-grow: 1;
+  display: flex;
+  flex-grow: 1;
+  height: 100vh;
   > aside {
     flex-shrink: 0;
   }
@@ -59,7 +61,7 @@ export default {
     margin-top: 58px;
     flex-grow: 1;
     padding: 16px;
-    background: lightgreen;
+    background: lightgrey;
     overflow: auto;
   }
 }
