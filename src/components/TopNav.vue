@@ -1,8 +1,13 @@
 <template>
   <div class="topNav">
+    <div class="toggleIcon">
+      <svg class="icon " aria-hidden="true" @click="toggle">
+        <use xlink:href="#icon-Humberg"></use>
+      </svg>
+    </div>
     <div class="logo" ><router-link to="/" class="logoText">DNA UI</router-link></div>
     <ul class="menu">
-      <li @click="toggle">菜单1</li>
+      <li>菜单1</li>
       <li>菜单2</li>
     </ul>
   </div>
@@ -48,12 +53,24 @@ setup(){
       padding: 16px 0;
     }
   }
+  .toggleIcon {
+    position:absolute;
+    left:20px;
+    top:50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
   @media (max-width:720px) {
     .menu {display: none}
     .logo {margin:0 auto}
-
+     .icon { display: inline-block}
   }
 }
-
-
+.icon {
+  width: 1.5em; height: 1.5em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  display: none;
+}
 </style>
