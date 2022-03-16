@@ -1,5 +1,5 @@
 <template>
-   <TopNav />
+  <TopNav/>
   <div class="content">
     <Transition name="slide">
       <aside v-if="menuVisible">
@@ -21,48 +21,50 @@
       </aside>
     </Transition>
     <main>
-      主内容
+      <router-view/>
     </main>
   </div>
 </template>
 
 <script lang="ts">
-import TopNav from '../components/TopNav.vue'
+import TopNav from '../components/TopNav.vue';
 import {inject, Ref} from 'vue';
 
 export default {
-  components:{TopNav},
-  setup(){
-    const menuVisible = inject<Ref<Boolean>>('menuVisible')
-    const toggle = ()=>{
-      menuVisible.value =  !menuVisible.value
-    }
-    window.addEventListener("resize", () => {
-      const width = document.documentElement.clientWidth
-      if(width > 720) {
-        menuVisible.value = true
-      }else {
-        menuVisible.value = false
+  components: {TopNav},
+  setup() {
+    const menuVisible = inject<Ref<Boolean>>('menuVisible');
+    const toggle = () => {
+      menuVisible.value = !menuVisible.value;
+    };
+    window.addEventListener('resize', () => {
+      const width = document.documentElement.clientWidth;
+      if (width > 720) {
+        menuVisible.value = true;
+      } else {
+        menuVisible.value = false;
       }
-
     });
-    return {toggle,menuVisible}
+    return {toggle, menuVisible};
   },
-}
+};
 </script>
 <style lang="scss">
 .content {
   display: flex;
 }
+
 aside {
   background: white;
   width: 200px;
   height: 100vh;
   border-right: 1px solid #e7e7e8;
   padding: 10px 16px 16px 16px;
+
   > h2 {
     margin-bottom: 4px;
   }
+
   > ol {
     > li {
       a {
@@ -71,6 +73,7 @@ aside {
         padding: 4px 0;
         width: 100%;
         color: #858484;
+
         &:hover {
           color: #213547;
         }
@@ -78,6 +81,7 @@ aside {
     }
   }
 }
+
 @media (max-width: 720px) {
   aside {
     position: fixed;
@@ -91,10 +95,12 @@ aside {
 .slide-leave-active {
   transition: all 0.4s ease;
 }
-.slide-enter-from{
+
+.slide-enter-from {
   transform: translateX(-100%);
   opacity: 0;
 }
+
 .slide-leave-to {
   transform: translateX(-100%);
   opacity: 0;
