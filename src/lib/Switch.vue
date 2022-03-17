@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" :class="{checked : x}">
+  <button @click="toggle" :class="{checked : checked}">
     <span></span>
   </button>
 </template>
@@ -8,11 +8,11 @@
 
  export  default {
    setup(){
-     const x = ref(false)
+     const checked = ref(false)
      const toggle = ()=>{
-       x.value = !x.value
+       checked.value = !checked.value
      }
-     return {x , toggle}
+     return {checked , toggle}
    }
 
  }
@@ -28,6 +28,15 @@ button{
   border-radius: $h/2;
   position: relative;
   transition: all 0.2s;
+  cursor: pointer;
+  &:active {
+    span {
+      width: $h2 + 4px;
+    }
+    &.checked > span {
+      left: calc(100% - #{$h2} - 6px);
+    }
+  }
 }
 span{
   position: absolute;
