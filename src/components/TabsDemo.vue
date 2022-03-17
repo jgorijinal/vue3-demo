@@ -1,11 +1,17 @@
 <template>
-<div>
-  Tabs
-</div>
+  <h1>实例</h1>
+  <Tabs>
+    <Tab title="标题1">内容1</Tab>
+    <Tab title="标题2">内容2</Tab>
+  </Tabs>
 </template>
-<script>
-
+<script lang="ts">
+import Tabs from "../lib/Tabs.vue";
+import Tab from "../lib/Tab.vue";
+export default {
+  components:{Tabs , Tab}
+}
 </script>
-<style>
+<style lang="scss">
 
 </style>
