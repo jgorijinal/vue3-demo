@@ -20,7 +20,7 @@
         </ol>
       </aside>
     </Transition>
-    <main>
+    <main class="main">
       <router-view/>
     </main>
   </div>
@@ -57,7 +57,7 @@ export default {
   > aside {
     flex-shrink: 0;
   }
-  > main {
+  > .main {
     margin-top: 58px;
     flex-grow: 1;
     padding: 16px;
@@ -94,7 +94,7 @@ aside {
   }
 }
 @media (min-width: 737px) {
-  main { margin-left: 200px}
+  .main { margin-left: 200px}
 }
 .slide-enter-active,
 .slide-leave-active {
