@@ -1,19 +1,38 @@
 <template>
-    <button class="gulu-button" :class="`gulu-theme-${theme}`">
+    <button class="gulu-button" :class="classes">
       <slot/>
     </button>
 </template>
 <script>
+import {computed} from "vue";
+
 export default {
 props:{
   theme : {
     type:String,
     default:'button',
     validator(value){
-      return ['link' , 'primary' , 'danger', 'dashed','button'].indexOf(value) >= 0
+      return ['link' , 'primary' , 'danger', 'dashed','button' , 'text'].indexOf(value) >= 0
+    }
+  },
+  size : {
+    type:String,
+    default:'normal',
+    validator(value){
+      return ['small' , 'normal' , 'big' ].indexOf(value) >= 0
     }
   }
-}
+},
+  setup(props , context){
+  const {theme , size } = props
+    const classes = computed(()=>{
+      return  {
+          [`gulu-theme-${theme}`] : theme,
+          [`gulu-size-${size}`] : size,
+      }
+    })
+    return {classes}
+  }
 
 }
 </script>
@@ -56,6 +75,60 @@ $radius: 4px;
   }
   &::-moz-focus-inner {
     border: 0;
+  }
+  &.gulu-theme-link{
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+    &:hover,&:focus{
+      color: lighten($blue, 10%);
+    }
+  }
+  &.gulu-theme-text{
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+    &:hover,&:focus{
+      background: darken(white, 5%);;
+    }
+  }
+  &.gulu-theme-danger {
+  background: #ff4d4f;
+    color:white ;
+    border:1px solid  #ff4d4f;
+    &:hover,&:focus{
+      background: #ff7875;
+    }
+    &:active {
+      background: #d9363e;
+      border:1px solid   #d9363e;
+    }
+  }
+  &.gulu-theme-dashed {
+   border: 1px dashed #d9d9d9;
+  }
+  &.gulu-theme-primary{
+    background: #1890ff;
+    color:white;
+
+    &:hover,&:focus{
+  background: #40a9ff;
+    }
+    &:active {
+      background: #096dd9;
+    }
+  }
+  &.gulu-theme-button {
+    &.gulu-size-big {
+      font-size: 24px;
+      height: 48px;
+      padding: 0 16px
+    }
+    &.gulu-size-small {
+      font-size: 12px;
+      height: 20px;
+      padding: 0 4px;
+    }
   }
 }
 </style>
