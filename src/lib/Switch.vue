@@ -1,7 +1,7 @@
 <template>
-  <button @click="toggle" :class="{checked : value}">
+  <button class="gulu-switch" @click="toggle" :class="{'gulu-checked' : value}">
     <span v-if="value === true" class="checkedChildren">{{checkedChildren}}</span>
-    <span class="circle"></span>
+    <span class="gulu-circle"></span>
     <span v-if="value === false" class="unCheckedChildren">{{unCheckedChildren}}</span>
   </button>
 </template>
@@ -27,10 +27,10 @@
    }
  }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 $h: 22px;
 $h2: $h - 4px;
-button{
+.gulu-switch{
   height: $h;
   width: $h*2;
   border: none;
@@ -40,10 +40,10 @@ button{
   transition: all 0.2s;
   cursor: pointer;
   &:active {
-    .circle {
+    .gulu-circle {
       width: $h2 + 4px;
     }
-    &.checked > .circle {
+    &.gulu-checked > .gulu-circle {
       left: calc(100% - #{$h2} - 2px);
       margin-left:-4px;
     }
@@ -64,7 +64,7 @@ button{
     margin-left: 24px;
   }
 }
-.circle{
+.gulu-circle{
   position: absolute;
   top: 2px;
   left: 2px;
@@ -74,13 +74,13 @@ button{
   border-radius: $h2 / 2;
   transition: all 0.2s;
 }
-  button.checked{
+.gulu-switch.gulu-checked{
     background: #1890ff;
   }
-  button.checked > .circle {
+.gulu-switch.gulu-checked > .gulu-circle {
     left: calc(100% - #{$h2} - 2px);
   }
-button:focus{
+.gulu-switch:focus{
   outline: none;
 }
 </style>
