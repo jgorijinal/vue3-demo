@@ -1,6 +1,9 @@
 <template>
   <Button theme="primary" @click="toggle"> 打开Dialog</Button>
-  <Dialog  v-model:visible="visible"  :ok="f1" :cancel="f2"/>
+  <Dialog  v-model:visible="visible"  :ok="f1" :cancel="f2">
+    <template v-slot:title>这里是标题</template>
+    <template v-slot:content>这里是内容哦</template>
+  </Dialog>
 </template>
 <script lang="ts">
 import Dialog from '../lib/Dialog.vue'
