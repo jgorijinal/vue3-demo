@@ -1,6 +1,8 @@
 <template>
   <button @click="toggle" :class="{checked : value}">
-    <span></span>
+    <span v-if="value === true" class="checkedChildren">{{checkedChildren}}</span>
+    <span class="circle"></span>
+    <span v-if="value === false" class="unCheckedChildren">{{unCheckedChildren}}</span>
   </button>
 </template>
 <script lang="ts">
@@ -9,6 +11,12 @@
      value: {
        type:Boolean,
        required:true,
+     },
+     checkedChildren:{
+       type:String
+     },
+     unCheckedChildren:{
+       type:String
      }
    },
    setup(props , context){
@@ -32,16 +40,31 @@ button{
   transition: all 0.2s;
   cursor: pointer;
   &:active {
-    span {
+    .circle {
       width: $h2 + 4px;
     }
-    &.checked > span {
+    &.checked > .circle {
       left: calc(100% - #{$h2} - 2px);
       margin-left:-4px;
     }
   }
+  span {
+    transition: all 0.25s
+  }
+  .checkedChildren {
+    color: white;
+   display: flex;
+    align-items: center;
+    margin-left:6px ;
+  }
+  .unCheckedChildren{
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+  }
 }
-span{
+.circle{
   position: absolute;
   top: 2px;
   left: 2px;
@@ -54,7 +77,7 @@ span{
   button.checked{
     background: #1890ff;
   }
-  button.checked > span {
+  button.checked > .circle {
     left: calc(100% - #{$h2} - 2px);
   }
 button:focus{

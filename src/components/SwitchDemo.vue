@@ -1,5 +1,5 @@
 <template>
-  <Switch v-model:value="bool" />
+  <Switch v-model:value="bool" checkedChildren="开" unCheckedChildren="关"/>
 </template>
 <script>
 import Switch from "../lib/Switch.vue";
