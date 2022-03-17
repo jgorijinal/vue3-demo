@@ -55,7 +55,7 @@ button{
     color: white;
    display: flex;
     align-items: center;
-    margin-left:6px ;
+    margin-left:8px ;
   }
   .unCheckedChildren{
     color: white;
