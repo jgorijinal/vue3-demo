@@ -10,6 +10,14 @@
   <Button size="small">Default</Button>
   <Button>Default</Button>
   <Button size="big">Default</Button>
+  <hr>
+  <Button size="small" theme="danger">Danger</Button>
+  <Button theme="danger">Danger</Button>
+  <Button size="big" theme="danger">Danger</Button>
+  <hr>
+  <Button size="small" theme="primary">Primary</Button>
+  <Button theme="primary">Primary</Button>
+  <Button size="big" theme="primary">Primary</Button>
   <h1>实例 disabled</h1>
   <Button >Default</Button>
   <Button disabled>Default(disabled)</Button>
@@ -26,7 +34,10 @@
   <Button theme="text">Text</Button>
   <Button theme="text" disabled>Text(disabled)</Button>
   <h1>实例 loading</h1>
-
+  <div>
+    <Button loading>加载中</Button>
+    <Button theme="primary">完成</Button>
+  </div>
 </template>
 <script lang="ts">
 import Button from '../lib/Button.vue'
