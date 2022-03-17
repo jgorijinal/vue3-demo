@@ -1,7 +1,7 @@
 <template>
   <Transition>
     <div v-if="visible">
-      <div class="gulu-dialog-overlay"></div>
+      <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
       <div class="gulu-dialog-wrapper">
         <div class="gulu-dialog">
           <header>标题 <span class="gulu-dialog-close" @click="close"></span></header>
@@ -10,8 +10,8 @@
             <p>第二行字</p>
           </main>
           <footer>
-            <Button theme="primary">确定</Button>
-            <Button>取消</Button>
+            <Button theme="primary" @click="onOk">确定</Button>
+            <Button @click="onCancel">取消</Button>
           </footer>
         </div>
       </div>
@@ -26,13 +26,38 @@ export default {
   props: {
     visible: {
       type: Boolean,
+    },
+    closeOnClickOverlay:{
+      type:Boolean,
+      default:true
+    },
+    ok:{
+      type:Function,
+    },
+    cancel:{
+      type:Function,
     }
   },
   setup(props,context){
     const close = ()=>{
-      context.emit('update:visible' , !props.visible)
+      context.emit('update:visible' , false)
     }
-    return {close}
+    const onClickOverlay = ()=>{
+      if(props.closeOnClickOverlay){
+          close()
+      }
+    }
+    const onOk = ()=>{
+      if(props.ok && props.ok() !== false) {
+        close()
+      }
+    }
+    const onCancel = ()=>{
+      if( props.cancel && props.cancel() !== false) {
+        close()
+      }
+    }
+    return {close , onClickOverlay , onOk , onCancel}
   }
 };
 </script>

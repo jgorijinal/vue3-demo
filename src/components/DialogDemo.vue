@@ -1,6 +1,6 @@
 <template>
   <Button theme="primary" @click="toggle"> 打开Dialog</Button>
-  <Dialog  v-model:visible="visible" />
+  <Dialog  v-model:visible="visible"  :ok="f1" :cancel="f2"/>
 </template>
 <script lang="ts">
 import Dialog from '../lib/Dialog.vue'
@@ -13,7 +13,13 @@ export default {
     const toggle = ()=>{
       visible.value  = !visible.value
     }
-    return {toggle , visible}
+    const f1 = ()=>{
+      console.log(1)   //return false 可以不关闭
+    }
+    const f2 = ()=>{
+      console.log(2)
+    }
+    return {toggle , visible , f1 ,f2}
   }
 }
 </script>
