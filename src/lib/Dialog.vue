@@ -1,6 +1,7 @@
 <template>
   <Transition>
     <div v-if="visible">
+      <Teleport to="body">
       <div class="gulu-dialog-overlay" @click="onClickOverlay"></div>
       <div class="gulu-dialog-wrapper">
         <div class="gulu-dialog">
@@ -14,6 +15,7 @@
           </footer>
         </div>
       </div>
+      </Teleport>
     </div>
   </Transition>
 </template>
@@ -87,6 +89,7 @@ $border-color: #d9d9d9;
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 11;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
   > header {
