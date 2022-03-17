@@ -1,5 +1,5 @@
 <template>
-    <button class="gulu-button" :class="classes">
+    <button class="gulu-button" :class="classes" :disabled="disabled">
       <slot/>
     </button>
 </template>
@@ -21,6 +21,10 @@ props:{
     validator(value){
       return ['small' , 'normal' , 'big' ].indexOf(value) >= 0
     }
+  },
+  disabled :{
+    type:Boolean,
+    default:false
   }
 },
   setup(props , context){
@@ -42,6 +46,7 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
+$grey:#f5f5f5;
 .gulu-button {
   box-sizing: border-box;
   height: $h;
@@ -128,6 +133,25 @@ $radius: 4px;
       font-size: 12px;
       height: 20px;
       padding: 0 4px;
+    }
+  }
+  &.gulu-theme-button ,&.gulu-theme-primary, &.gulu-theme-dashed  {
+    &[disabled] {
+      background:$grey ;
+      cursor: not-allowed;
+      color: #d9d9d9;
+      border-color: #d9d9d9;
+      &:hover {
+        border-color: #d9d9d9;
+      }
+    }
+  }
+  &.gulu-theme-link, &.gulu-theme-text {
+    &[disabled] {
+      background: #ffffff;
+      border-color: #ffffff;
+      cursor: not-allowed;
+      color: #d9d9d9;
     }
   }
 }
