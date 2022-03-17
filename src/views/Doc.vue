@@ -61,7 +61,7 @@ export default {
     margin-top: 58px;
     flex-grow: 1;
     padding: 16px;
-    background: lightgrey;
+    background: white;
     overflow: auto;
   }
 }
@@ -93,10 +93,6 @@ aside {
     }
   }
 }
-
-//@media (max-width: 720px) {
-//
-//}
 @media (min-width: 737px) {
   main { margin-left: 200px}
 }
