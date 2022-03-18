@@ -3,7 +3,7 @@
     <div class="gulu-tabs-nav">
       <div  @click="select(t)" class="gulu-tabs-nav-item" :class="{'selected':t === selected}"
             v-for="(t,index) in titles" :key="index"
-            :ref= "el =>{ if(el) navItems[index] = el }"
+            :ref= "el =>{ if(t === selected) selectedItem = el }"
       >{{t}}</div>
       <div ref="indicator" class="gulu-tabs-nav-indicator"></div>
     </div>
@@ -35,31 +35,21 @@ export default  {
     const select = (title:string)=>{
       context.emit('update:selected' , title)
     }
-    const  navItems = ref<HTMLDivElement[] >([])
     const indicator = ref(null)
-    onMounted(()=> {                // ref onMounted之后生效 , 数据绑定都放在 mount后面
-      const divs = navItems.value
-      const result = divs.filter(div => {
-        return div.classList.contains('selected')
-      })[0]
-      const {width} =  result.getBoundingClientRect()
-      console.log(result)
+    const selectedItem = ref<HTMLDivElement>(null)
+    const x = ()=>{
+      const {width} =  selectedItem.value.getBoundingClientRect()
       indicator.value.style.width = width + 'px'
-      const left = result.offsetLeft
+      const left = selectedItem.value.offsetLeft
       indicator.value.style.left = left + 'px'
+    }
+    onMounted(()=> {                // ref onMounted之后生效 , 数据绑定都放在 mount后面
+      x()
     })
     onUpdated(() => {
-      const divs = navItems.value
-      const result = divs.filter(div => {
-        return div.classList.contains('selected')
-      })[0]
-      const {width} =  result.getBoundingClientRect()
-      console.log(result)
-      indicator.value.style.width = width + 'px'
-      const left = result.offsetLeft
-      indicator.value.style.left = left + 'px'
+     x()
     })
-    return {defaults , titles , select ,navItems , indicator}
+    return {defaults , titles , select ,selectedItem, indicator}
   }
 }
 </script>
