@@ -8,6 +8,39 @@
       <router-link to="/doc">开始</router-link>
     </p>
   </div>
+  <div class="features">
+    <ul>
+      <li>
+        <svg class="icon">
+          <use xlink:href="#icon-Vue"></use>
+        </svg>
+        <div class="wrapper">
+          <h2>
+            基于 Vue 3
+          </h2>
+          <p>骄傲地使用了 Vue 3 Composition API</p>
+        </div>
+      </li>
+      <li>
+        <svg class="icon">
+          <use xlink:href="#icon-ts"></use>
+        </svg>
+        <div class="wrapper">
+          <h2>基于 TypeScript </h2>
+          <p>源代码采用TypeScript书写（非严格检查）</p>
+        </div>
+      </li>
+      <li>
+        <svg class="icon">
+          <use xlink:href="#icon-light"></use>
+        </svg>
+        <div class="wrapper">
+          <h2>代码易读</h2>
+          <p>每个组件的源代码都读起来极其简洁</p>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts">
@@ -19,7 +52,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .banner {
-  padding: 100px 0;
+  padding:140px 0 0 0 ;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +90,7 @@ export default {
   }
   > .actions {
     margin-top:20px;
-    padding: 8px 0;
+    padding-top: 20px;
 
     a {
       transition: all 0.3s;
@@ -75,5 +108,41 @@ export default {
     }
   }
 }
+.features {
+  ul {
+    width: 375px;
+    margin: 64px auto;
+    @media(min-width: 800px) {
+      width: 800px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    @media (min-width:1200px){
+      width: 1200px;
+      display: flex;
+      justify-content: space-around;
 
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      margin: 30px 0;
+      width: 375px;
+     color:#213547;
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+
+    svg {
+      width: 64px;
+      height: 64px;
+      margin-right: 10px;
+    }
+  }
+}
 </style>

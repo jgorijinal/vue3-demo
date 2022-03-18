@@ -3,6 +3,18 @@
   <div class="content">
     <Transition name="slide">
       <aside v-if="menuVisible">
+        <h1>文档</h1>
+        <ol>
+          <li>
+            <router-link to="/doc/intro">介绍</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/install">安装</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/get-started">开始使用</router-link>
+          </li>
+        </ol>
         <h2>组件列表</h2>
         <ol>
           <li>
@@ -87,7 +99,11 @@ aside {
         width: 100%;
         color: #858484;
         &:hover {
-          color: #213547;
+          color: #1b2f41;
+        }
+        &.router-link-active{
+          font-weight:bold ;
+          color:  #42b883;
         }
       }
     }
