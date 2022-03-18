@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 import Tab from './Tab.vue'
-import {onMounted, ref} from 'vue';
+import {computed, onMounted, onUpdated, ref} from 'vue';
 export default  {
   props:{
     selected:{
@@ -35,15 +35,29 @@ export default  {
     const select = (title:string)=>{
       context.emit('update:selected' , title)
     }
-    const  navItems = ref<HTMLDivElement[]>([])
+    const  navItems = ref<HTMLDivElement[] >([])
     const indicator = ref(null)
-    onMounted(()=> {
+    onMounted(()=> {                // ref onMounted之后生效 , 数据绑定都放在 mount后面
       const divs = navItems.value
       const result = divs.filter(div => {
         return div.classList.contains('selected')
       })[0]
       const {width} =  result.getBoundingClientRect()
+      console.log(result)
       indicator.value.style.width = width + 'px'
+      const left = result.offsetLeft
+      indicator.value.style.left = left + 'px'
+    })
+    onUpdated(() => {
+      const divs = navItems.value
+      const result = divs.filter(div => {
+        return div.classList.contains('selected')
+      })[0]
+      const {width} =  result.getBoundingClientRect()
+      console.log(result)
+      indicator.value.style.width = width + 'px'
+      const left = result.offsetLeft
+      indicator.value.style.left = left + 'px'
     })
     return {defaults , titles , select ,navItems , indicator}
   }
@@ -60,7 +74,7 @@ $border-color: #d9d9d9;
     border-bottom: 1px solid $border-color;
     position: relative;
     &-item {
-      padding: 8px 0;
+      padding: 8px 8px;
       margin: 0 16px;
       cursor: pointer;
       &:first-child {
@@ -77,6 +91,7 @@ $border-color: #d9d9d9;
       left: 0;
       bottom: -1px;
       width: 100px;
+      transition: all 0.25s ease;
     }
 
   }
