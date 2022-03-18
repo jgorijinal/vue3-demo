@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 import Tab from './Tab.vue'
-import {computed, onMounted, onUpdated, ref} from 'vue';
+import {computed, onMounted, onUpdated, ref, watchEffect} from 'vue';
 export default  {
   props:{
     selected:{
@@ -37,17 +37,26 @@ export default  {
     }
     const indicator = ref(null)
     const selectedItem = ref<HTMLDivElement>(null)
-    const x = ()=>{
-      const {width} =  selectedItem.value.getBoundingClientRect()
-      indicator.value.style.width = width + 'px'
-      const left = selectedItem.value.offsetLeft
-      indicator.value.style.left = left + 'px'
-    }
-    onMounted(()=> {                // ref onMounted之后生效 , 数据绑定都放在 mount后面
-      x()
-    })
-    onUpdated(() => {
-     x()
+    // const x = ()=>{
+    //   const {width} =  selectedItem.value.getBoundingClientRect()
+    //   indicator.value.style.width = width + 'px'
+    //   const left = selectedItem.value.offsetLeft
+    //   indicator.value.style.left = left + 'px'
+    // }
+    // onMounted(()=> {              // ref onMounted之后生效 , 数据绑定都放在 mount后面
+    //   x()
+    // })
+    // onUpdated(() => {
+    //  x()
+    // })
+    //
+    onMounted( ()=>{
+      watchEffect(()=>{
+        const {width} =  selectedItem.value.getBoundingClientRect()
+        indicator.value.style.width = width + 'px'
+        const left = selectedItem.value.offsetLeft
+        indicator.value.style.left = left + 'px'
+      })
     })
     return {defaults , titles , select ,selectedItem, indicator}
   }
