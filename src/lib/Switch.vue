@@ -1,5 +1,5 @@
 <template>
-  <button class="gulu-switch" @click="toggle" :class="{'gulu-checked' : value}">
+  <button class="gulu-switch" @click="toggle" :class="{'gulu-checked' : value}" :disabled="disabled">
     <span v-if="value === true" class="checkedChildren">{{checkedChildren}}</span>
     <span class="gulu-circle"></span>
     <span v-if="value === false" class="unCheckedChildren">{{unCheckedChildren}}</span>
@@ -17,6 +17,10 @@
      },
      unCheckedChildren:{
        type:String
+     },
+     disabled: {
+       type:Boolean,
+       default:false
      }
    },
    setup(props , context){
@@ -31,6 +35,7 @@
 $h: 22px;
 $h2: $h - 4px;
 .gulu-switch{
+  font-size: 14px;
   height: $h;
   width: $h*2;
   border: none;
@@ -53,7 +58,7 @@ $h2: $h - 4px;
   }
   .checkedChildren {
     color: white;
-   display: flex;
+     display: flex;
     align-items: center;
     margin-left:8px ;
   }
@@ -62,6 +67,15 @@ $h2: $h - 4px;
     display: flex;
     align-items: center;
     margin-left: 24px;
+  }
+  &[disabled] {
+    background: #a3d3ff;
+    cursor: not-allowed;
+    .gulu-circle {
+      &:active{
+        width: $h2 ;
+      }
+    }
   }
 }
 .gulu-circle{
