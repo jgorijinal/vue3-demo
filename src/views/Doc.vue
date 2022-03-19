@@ -49,14 +49,24 @@ export default {
     const toggle = () => {
       menuVisible.value = !menuVisible.value;
     };
-    window.addEventListener('resize', () => {
-      const width = document.documentElement.clientWidth;
-      if (width >= 720) {
-        menuVisible.value = true;
-      } else {
-        menuVisible.value = false;
-      }
-    });
+    let canUse = true
+      window.addEventListener('resize', () => {
+        if (canUse) {
+          const width = document.documentElement.clientWidth;
+          console.log(width)
+          if (width >= 720) {
+            menuVisible.value = true;
+          } else {
+            menuVisible.value = false;
+          }
+        }
+        canUse = false
+        setTimeout(()=>{
+          canUse = true
+        } , 400)
+      });
+
+
     return {toggle, menuVisible};
   },
 };

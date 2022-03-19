@@ -20,7 +20,7 @@ import {Button, Tabs, Switch, Dialog} from "dna-ui"
   </div>
 </template>
 <script>
-import {Button, Tabs, Switch, Dialog} from "king-ui"
+import {Button, Tabs, Switch, Dialog} from "dna-ui"
 export default {
   components: {Button}
 }
