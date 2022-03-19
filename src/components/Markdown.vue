@@ -7,16 +7,17 @@
 import {ref} from 'vue';
 export default  {
   props:{
-    path: {
-      type:String
+    content:{
+      type:String,
+      required:true
     }
-  },
-  setup(props , context){
-    const content = ref(null)
-    import(props.path).then((result)=>{
-      content.value = result.default
-    })
-    return {content}
   }
+  // setup(props){
+  //   const content = ref(null)
+  //   import(props.path).then((result)=>{
+  //     content.value = result.default
+  //   })
+  //   return {content}
+  // }
 }
 </script>
