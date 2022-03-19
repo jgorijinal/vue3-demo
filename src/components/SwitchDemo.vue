@@ -1,25 +1,17 @@
 <template>
-  <Switch v-model:value="bool1"/>
-  <hr>
-  <Switch v-model:value="bool2" checkedChildren="开" unCheckedChildren="关"/>
-  <Switch v-model:value="bool3" checkedChildren="1" unCheckedChildren="0"/>
-  <hr>
-  <Switch v-model:value="bool4" disabled/>
-  <Switch v-model:value="bool5" disabled/>
-
+  <Demo :component="Switch1Demo"></Demo>
+  <Demo :component="Switch2Demo"></Demo>
+  <Demo :component="Switch3Demo"></Demo>
 </template>
 <script>
-import Switch from "../lib/Switch.vue";
-import {ref} from "vue";
+import Demo from './Demo.vue'
+import Switch1Demo from './Switch1.demo.vue'
+import Switch2Demo from './Switch2.demo.vue'
+import Switch3Demo from './Switch3.demo.vue'
 export default  {
-  components:{Switch},
+  components:{ Switch1Demo , Demo , Switch2Demo , Switch3Demo},
   setup(){
-    const bool1 = ref(true)
-    const bool2 = ref(true)
-    const bool3 = ref(true)
-    const bool4 = ref(false)
-    const bool5 = ref(true)
-    return {bool1 , bool2 , bool3 , bool4 , bool5}
+    return {Switch1Demo , Switch2Demo , Switch3Demo}
   }
 }
 </script>

@@ -1,6 +1,12 @@
+<demo>
+支持 disabled
+</demo>
+
 <template>
-  <Switch v-model:value="bool1" disabled/>
-  <Switch v-model:value="bool2" disabled/>
+  <div class="box">
+    <Switch v-model:value="bool1" disabled/>
+    <Switch v-model:value="bool2" disabled/>
+  </div>
 </template>
 
 <script>
@@ -19,5 +25,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.box {
+  display: flex;
+  align-items: center;
+  .gulu-switch {
+    margin-right: 10px;
+  }
+}
 </style>

@@ -99,9 +99,9 @@ $h2: $h - 4px;
 
 .gulu-switch.gulu-checked {
   background: #1890ff;
-  cursor: not-allowed;
   &[disabled] {
     background: #a3d3ff;
+    cursor: not-allowed;
     .gulu-circle {
       &:active {
         width: $h2;

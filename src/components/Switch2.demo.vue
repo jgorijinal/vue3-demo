@@ -1,6 +1,12 @@
+<demo>
+支持 text
+</demo>
+
 <template>
-  <Switch v-model:value="bool1" checkedChildren="开" unCheckedChildren="关"/>
-  <Switch v-model:value="bool2" checkedChildren="1" unCheckedChildren="0"/>
+  <div class="box">
+    <Switch v-model:value="bool1" checkedChildren="开" unCheckedChildren="关"/>
+    <Switch v-model:value="bool2" checkedChildren="1" unCheckedChildren="0"/>
+  </div>
 </template>
 
 <script>
@@ -18,4 +24,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.box {
+  display: flex;
+  align-items: center;
+  .gulu-switch {
+    margin-right: 10px;
+  }
+}
 </style>
