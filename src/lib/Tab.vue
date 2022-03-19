@@ -1,5 +1,5 @@
 <template>
-    <div>{{title}}</div>
+    <div><slot /></div>
 </template>
 <script lang="ts">
 export default  {

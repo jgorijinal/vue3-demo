@@ -32,6 +32,7 @@ export default  {
    const titles = defaults.map (tag => {
      return tag.props.title
    })
+    console.log(defaults[0])
     const select = (title:string)=>{
       context.emit('update:selected' , title)
     }
