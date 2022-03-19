@@ -17,7 +17,7 @@
 <script lang="ts">
 import Button from '../lib/Button.vue'
 import 'prismjs';
-import 'prismjs/themes/prism.css'
+import 'prismjs/themes/prism-tomorrow.css'
 
 const Prism = (window as any).Prism
 export default {
@@ -45,7 +45,6 @@ export default {
   watch:{
     codeVisible(){
       if (this.codeVisible) {
-        console.log(this.$refs.wrapper)
         this.$refs.wrapper.style.height = this.$refs.code.getBoundingClientRect().height + 'px'
       }else {
         this.$refs.wrapper.style.height = 0 + 'px'

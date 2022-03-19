@@ -1,53 +1,23 @@
 <template>
- <h1>实例 theme</h1>
-  <Button @click="onClick" @mouseover="onClick" @focus="onClick" >Default</Button>
- <Button theme="link">Link</Button>
-  <Button theme="text">Text</Button>
-  <Button theme="danger">Danger</Button>
-  <Button theme="dashed">Dashed</Button>
-  <Button theme="primary">Primary</Button>
-  <h1>实例 size</h1>
-  <Button size="small">Default</Button>
-  <Button>Default</Button>
-  <Button size="big">Default</Button>
-  <hr>
-  <Button size="small" theme="danger">Danger</Button>
-  <Button theme="danger">Danger</Button>
-  <Button size="big" theme="danger">Danger</Button>
-  <hr>
-  <Button size="small" theme="primary">Primary</Button>
-  <Button theme="primary">Primary</Button>
-  <Button size="big" theme="primary">Primary</Button>
-  <h1>实例 disabled</h1>
-  <Button >Default</Button>
-  <Button disabled>Default(disabled)</Button>
-  <hr>
-  <Button theme="primary">Primary</Button>
-  <Button theme="primary" disabled>Primary(disabled)</Button>
-  <hr>
-  <Button theme="dashed">Dashed</Button>
-  <Button theme="dashed" disabled>Dashed(disabled)</Button>
-  <hr>
-  <Button theme="link">Link</Button>
-  <Button theme="link" disabled>Link(disabled)</Button>
-  <hr>
-  <Button theme="text">Text</Button>
-  <Button theme="text" disabled>Text(disabled)</Button>
-  <h1>实例 loading</h1>
-  <div>
-    <Button loading>加载中</Button>
-    <Button theme="primary">完成</Button>
-  </div>
+  <Demo :component="Button1Demo"/>
+  <Demo :component="Button2Demo"/>
+  <Demo :component="Button3Demo"/>
+  <Demo :component="Button4Demo"/>
 </template>
 <script lang="ts">
 import Button from '../lib/Button.vue'
+import Demo from './Demo.vue'
+import Button1Demo from './Button1.demo.vue'
+import Button2Demo from './Button2.demo.vue'
+import Button3Demo from './Button3.demo.vue'
+import Button4Demo from './Button4.demo.vue'
  export default {
-   components:{Button},
+   components:{Button , Button1Demo ,Button2Demo , Button3Demo , Demo , Button4Demo},
    setup(){
      const onClick = ()=>{
        console.log('hi')
      }
-     return { onClick }
+     return { onClick ,Button1Demo , Button2Demo ,Button3Demo  , Demo , Button4Demo}
    }
  }
 </script>
